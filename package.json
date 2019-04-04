@@ -1,0 +1,22 @@
+{
+  "name": "text-to-morse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onurrsalmann/text-to-morse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onurrsalmann/text-to-morse/issues"
+  },
+  "homepage": "https://github.com/onurrsalmann/text-to-morse#readme",
+  "dependencies": {
+    "socket.io": "^2.2.0"
+  }
+}

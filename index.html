@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="./css/style.css" type="text/css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="vue.js"></script>
+    <title>Text-to-Morse</title>
+  </head>
+  <body>
+    <header>
+      <a href="/index.html"><img id="logo" src="images/logo.png"></a>
+      <a id="header_text">Welcome Text to Morse</a>
+    </header>
+    <div id="app">
+      <div v-if="welcome" id="welcome_interface">
+        <h1 id="option_select">Please select one of the options below</h1>
+        <div id="option_block">
+          <div align="center" v-on:click="ttmbutton" style="margin-right: 3%" class="option">
+            <a href="##" class="option_text">Text-to-Morse</a>
+          </div>
+          <div align="center" v-on:click="mttbutton" style="margin-left: 3%" class="option">
+            <a href="#" class="option_text">Morse-to-Text</a>
+          </div>
+        </div>
+      </div>
+      <!-- t_t_m = text to morse // m_t_t = morse to text-->
+      <div v-if="ttm" id="ttminterface">
+        <h1>Text-to-Morse</h1>
+        <div id="ttmTextBox">
+          <textarea v-model="message" name="text" placeholder="add multiple lines"></textarea>
+          <p>Message is: {{ message }}</p>
+        </div>
+        <div align="center" v-on:click="mttbutton" style="margin:0 auto;" class="option">
+          <a href="#" class="option_text">Morse-to-Text</a>
+        </div>
+        <a href="index.html">Back to Home Page</a>
+      </div>
+      <div v-if="mtt" id="mttinterface">
+        <h1>Morse-to-Text</h1>
+        <div id="mttTextBox">
+          <textarea v-model="message" name="text" placeholder="add multiple lines"></textarea>
+          <p>Message is: {{ message }}</p>
+        </div>
+        <div align="center" v-on:click="ttmbutton" style="margin:0 auto;" class="option">
+          <a href="##" class="option_text">Text-to-Morse</a>
+        </div>
+        <a href="index.html">Back to Home Page</a>
+      </div>
+    </div>
+    <footer>
+      <a style="font-size: 18px;">@2019 Onur Salman <a style="text-decoration:none; font-size:18px; color:#000;" href="">www.onursalman.com</a></a>
+    </footer>
+    <script>
+  var socket = io();
+</script>
+  </body>
+</html>

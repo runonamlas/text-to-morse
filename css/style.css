@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+html, body{
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  /*overflow: hidden;*/
+}
+/* Header */
+header{
+  width:100%;
+  height: 5vw;
+  background-color: #16a085;
+  position: absolute;
+  z-index: 1;
+}
+#logo{
+  padding: 0.8vw;
+  max-width: 10vw;
+  max-height: 100vw;
+  float: left;
+}
+#header_text{float: right; padding: 1.2vw; color:#fff; font-size: 2vw;}
+/* Footer */
+footer{
+  position: absolute;
+  width: 100%;
+  bottom:1vw;
+  z-index: 1;
+
+}
+#welcome_interface, #ttminterface, #mttinterface{
+  position: absolute;
+  width: 100%;
+  height: 83%;
+  margin: 0 auto;
+  padding: 0 auto;
+  top:5vw;
+}
+/*Welcome Interface */
+#option_select {
+  padding-top:10%;
+  font-size: 3vw;
+  margin: 0;
+}
+#option_block{
+  height: 53%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.option {
+  margin-top:2%;
+  width: 25vw;
+  height: 5.2vw;
+  background-color: #16a085;
+  display: table;
+}
+.option_text{
+  font-size: 1.8vw;
+  color:#ffffff;
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+/* Text to Morse Interface
