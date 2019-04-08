@@ -9,53 +9,56 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="vue.js"></script>
     <title>Text-to-Morse</title>
+    <script> var socket = io(); </script>
   </head>
   <body>
-    <header>
-      <a href="/index.html"><img id="logo" src="images/logo.png"></a>
-      <a id="header_text">Welcome Text to Morse</a>
-    </header>
+
     <div id="app">
+      <vue-header></vue-header>
       <div v-if="welcome" id="welcome_interface">
         <h1 id="option_select">Please select one of the options below</h1>
         <div id="option_block">
           <div align="center" v-on:click="ttmbutton" style="margin-right: 3%" class="option">
-            <a href="##" class="option_text">Text-to-Morse</a>
+            <a href="#" class="option_text">Text-to-Morse</a>
           </div>
           <div align="center" v-on:click="mttbutton" style="margin-left: 3%" class="option">
             <a href="#" class="option_text">Morse-to-Text</a>
           </div>
         </div>
       </div>
+      <vue-page
+      title=Text-to-Morse
+      v-if="ttm"
+      ></vue-page>
+      <vue-page
+      title=Morse-to-Text
+      v-if="mtt"
+      ></vue-page>
       <!-- t_t_m = text to morse // m_t_t = morse to text-->
-      <div v-if="ttm" id="ttminterface">
+      <!--<div v-if="ttm" id="ttminterface">
         <h1>Text-to-Morse</h1>
         <div id="ttmTextBox">
-          <textarea v-model="message" name="text" placeholder="add multiple lines"></textarea>
-          <p>Message is: {{ message }}</p>
+          <textarea v-model="textInput" name="text" placeholder="add multiple lines"></textarea>
+          <p>Message is: {{ outputMorse }}</p>
         </div>
-        <div align="center" v-on:click="mttbutton" style="margin:0 auto;" class="option">
+        <div align="center" v-on:click="convertMorse" style="margin:0 auto;" class="option">
           <a href="#" class="option_text">Morse-to-Text</a>
         </div>
         <a href="index.html">Back to Home Page</a>
       </div>
-      <div v-if="mtt" id="mttinterface">
+      <div v-if="mtt" id="pageinterface">
         <h1>Morse-to-Text</h1>
         <div id="mttTextBox">
-          <textarea v-model="message" name="text" placeholder="add multiple lines"></textarea>
+          <textarea v-model="convertText" name="text" placeholder="add multiple lines"></textarea>
           <p>Message is: {{ message }}</p>
         </div>
         <div align="center" v-on:click="ttmbutton" style="margin:0 auto;" class="option">
           <a href="##" class="option_text">Text-to-Morse</a>
         </div>
         <a href="index.html">Back to Home Page</a>
-      </div>
+      </div>-->
+      <vue-footer></vue-footer>
     </div>
-    <footer>
-      <a style="font-size: 18px;">@2019 Onur Salman <a style="text-decoration:none; font-size:18px; color:#000;" href="">www.onursalman.com</a></a>
-    </footer>
-    <script>
-  var socket = io();
-</script>
+
   </body>
 </html>
