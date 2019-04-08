@@ -1,11 +1,25 @@
 var app = require('http').createServer(handler)
 var io = require('socket.io')(app);
 var fs = require('fs');
-app.listen(3000);
+app.listen(3000, () => {console.log("Server is listening on localhost:3000");});
 
 function handler (req,res){
   if(req.url === '/') {
     fs.readFile('index.html',function(err,data){
+      res.writeHead(200,{'Content-Type': 'text/html'});
+      res.write(data);
+      res.end();
+    });
+  }
+  else if(req.url === 'ttm.html') {
+    fs.readFile('ttm.html',function(err,data){
+      res.writeHead(200,{'Content-Type': 'text/html'});
+      res.write(data);
+      res.end();
+    });
+  }
+  else if(req.url === 'mtt.html') {
+    fs.readFile('mtt.html',function(err,data){
       res.writeHead(200,{'Content-Type': 'text/html'});
       res.write(data);
       res.end();
@@ -28,22 +42,18 @@ function handler (req,res){
                                 }[ req.url.substr(dotoffset) ];
             res.setHeader('Content-type' , mimetype);
             res.end(data);
-        } else {
-            fs.readFile('index.html',function(err,data){
-              console.log ('file not found: ' + req.url);
-              res.writeHead(404, "Not Found");
-              res.write(data);
-              res.end();
-            });
         }
-
     });
   }
 }
 
+
 io.on('connection', function(socket){
   console.log('a user connected');
+  socket.on('mors', (mrs) => io.emit('mors', mrs))
+  socket.on('text', (txt) => io.emit('text', txt))
   socket.on('disconnect', function(){
+    socket.disconnect();
     console.log('user disconnected');
   });
 });
