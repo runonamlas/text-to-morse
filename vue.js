@@ -30,6 +30,11 @@
        this.ttm = true;
        this.mtt = false
      },
+     welcomebutton(){
+      this.welcome=true;
+      this.ttm = false;
+      this.mtt = false
+    },
      mttbutton(){
        this.welcome=false;
        this.ttm = false;
@@ -109,6 +114,7 @@
       })
       socket.on('text', function (text) {
         app.push(text);
+        alert.error(text);
       })
     }
   })

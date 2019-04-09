@@ -24,27 +24,47 @@
         </div>
       </div>
       <div v-if="ttm" id="pageinterface">
-          <h1>Text-to-Morse</h1>
+          <h1 style="font-size: 3vw; padding-top:1%;">Text-to-Morse</h1>
           <div id="textBox">
-            <p>{{morse}}</p>
             <form @submit.prevent="sendText">
-              <input type="text" placeholder="Text to morse" v-model:value="text" autocomplete="off" />
-              <button>Send</button>
-            </form>
-            <a href="index.html">Back to Home Page</a>
+              <textarea style="max-width:50%; max-height:9vw; height: 8vw;" row="25"
+               cols="100" maxlength=50000; required type="text" placeholder="Please enter text that does not contain Turkish characters here."
+                v-model:value="text" autocomplete="off"></textarea></br>
+              <button style="background-color:#16a085; color:white; border:none;
+              width:10%; height:3vw; border-radius:8px;">Convert</button>
+            </form></br>
+            <h2 style="margin:0%;">Covert Morse Code:</h2>
+            <div id="convertDiv">
+              <h3>{{morse}}</h3>
+            </div>
+          </div>
+          <div style="padding-top:1.4vw;">
+              <a class="links" v-on:click="welcomebutton">Back to Home Page</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="links" v-on:click="mttbutton">Morse Code to Text</a>
           </div>
         </div>
       <div v-if="mtt" id="pageinterface">
-            <h1>Morse-to-Text</h1>
+            <h1 style="font-size: 3vw; padding-top:1%;" >Morse-to-Text</h1>
             <div id="textBox">
-              <p>{{text}}</p>
               <form @submit.prevent="sendMorse">
-                <input type="text" placeholder="Text to morse" v-model:value="morse" autocomplete="off" />
-                <button>Send</button>
-              </form>
-              <a href="index.html">Back to Home Page</a>
+                <textarea style="max-width:50%; max-height:9vw; height: 8vw;"
+                row="25" cols="100" maxlength=50000; required type="text"
+                placeholder="Please enter your morse code.(- and . have to contain)" v-model:value="morse" autocomplete="off"></textarea></br>
+                <button style="background-color:#16a085; color:white; border:none;
+                width:10%; height:3vw; border-radius:8px;">Convert</button>
+              </form></br>
+              <h2 style="margin:0%;">Covert Text:</h2>
+              <div id="convertDiv">
+                <h3>{{text}}</h3>
+              </div>
             </div>
-        </div>
+            <div style="padding-top:1.4vw;">
+                  <a class="links" v-on:click="welcomebutton">Back to Home Page</a>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a class="links" v-on:click="ttmbutton">Text to Morse Code</a>
+              </div>
+            </div>
       <vue-footer></vue-footer>
   </div>
   <script type="text/javascript" src="vue.js"></script>

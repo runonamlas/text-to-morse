@@ -11,20 +11,6 @@ function handler (req,res){
       res.end();
     });
   }
-  else if(req.url === 'ttm.html') {
-    fs.readFile('ttm.html',function(err,data){
-      res.writeHead(200,{'Content-Type': 'text/html'});
-      res.write(data);
-      res.end();
-    });
-  }
-  else if(req.url === 'mtt.html') {
-    fs.readFile('mtt.html',function(err,data){
-      res.writeHead(200,{'Content-Type': 'text/html'});
-      res.write(data);
-      res.end();
-    });
-  }
   else {
     fs.readFile('./' + req.url, function(err,data){
       if (!err) {
@@ -42,6 +28,14 @@ function handler (req,res){
                                 }[ req.url.substr(dotoffset) ];
             res.setHeader('Content-type' , mimetype);
             res.end(data);
+        }
+        else {
+            fs.readFile('index.html',function(err,data){
+              console.log ('file not found: ' + req.url);
+              res.writeHead(404, "Not Found");
+              res.write(data);
+              res.end();
+            });
         }
     });
   }

@@ -41,7 +41,7 @@ footer{
 }
 /*Welcome Interface */
 #option_select {
-  padding-top:10%;
+  padding-top:12%;
   font-size: 3vw;
   margin: 0;
 }
@@ -69,4 +69,17 @@ footer{
   font-weight: bold;
 
 }
-/* Text to Morse Interface
+/* Text to Morse Interface*/
+#convertDiv{
+  max-width: 50%;
+  max-height: 14vw;
+  width: 50%;
+  height: 14vw;
+  overflow: auto;
+  margin:auto;
+}
+.links{
+  color:#16a085;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
