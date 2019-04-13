@@ -14,33 +14,31 @@ function handler (req,res){
   else {
     fs.readFile('./' + req.url, function(err,data){
       if (!err) {
-            var dotoffset = req.url.lastIndexOf('.');
-            var mimetype = dotoffset == -1
-                            ? 'text/plain'
-                            : {
-                                '.html' : 'text/html',
-                                '.ico' : 'image/x-icon',
-                                '.jpg' : 'image/jpeg',
-                                '.png' : 'image/png',
-                                '.gif' : 'image/gif',
-                                '.css' : 'text/css',
-                                '.js' : 'text/javascript'
-                                }[ req.url.substr(dotoffset) ];
-            res.setHeader('Content-type' , mimetype);
-            res.end(data);
-        }
-        else {
-            fs.readFile('index.html',function(err,data){
-              console.log ('file not found: ' + req.url);
-              res.writeHead(404, "Not Found");
-              res.write(data);
-              res.end();
-            });
-        }
+        var dotoffset = req.url.lastIndexOf('.');
+        var mimetype = dotoffset == -1
+          ? 'text/plain'
+          : {
+            '.html' : 'text/html',
+            '.ico' : 'image/x-icon',
+            '.jpg' : 'image/jpeg',
+            '.png' : 'image/png',
+            '.gif' : 'image/gif',
+            '.css' : 'text/css',
+            '.js' : 'text/javascript'
+            }[ req.url.substr(dotoffset) ];
+        res.setHeader('Content-type' , mimetype);
+        res.end(data);
+      }else{
+        fs.readFile('index.html',function(err,data){
+          console.log ('file not found: ' + req.url);
+          res.writeHead(404, "Not Found");
+          res.write(data);
+          res.end();
+        });
+      }
     });
   }
 }
-
 
 io.on('connection', function(socket){
   console.log('a user connected');
