@@ -90,6 +90,8 @@
                   convertText += letters[i];
                 }
               }
+              if(morsee[k+1] == ' ' && morsee[k+2] == ' ' && morsee[k+3] == ' '
+              && morsee[k+4] == ' ' && morsee[k+5] == ' '){ convertText += ' ';}
               char='';
             }
           }else{ char += morsee[k];}
